@@ -42,7 +42,7 @@ pos, prob, state = sampler.run_mcmc(p0, 100)
 # clear burn-in results
 sampler.reset()
 
-# run walkers and collect actula data
+# run walkers and collect actual data
 sampler.run_mcmc(pos, 1000)
 
 # print rate at which new points were explored. Should be between .2 and .5

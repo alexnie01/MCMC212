@@ -112,7 +112,7 @@ if __name__ == '__main__':
         sys.exit(0)
     
     sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob, threads = threads, 
-                                    args=(TT_,))
+                                    args=(TT_,),pool=pool)
 
     pool.close()
 

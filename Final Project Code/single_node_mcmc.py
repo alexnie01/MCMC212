@@ -11,7 +11,7 @@ import emcee
 import camb
 from camb import model, initialpower
 #import time
-#import sys
+import sys
 #import corner
 #import pdb
 
@@ -23,8 +23,8 @@ TT_ = np.loadtxt('TTHILUB.txt', skiprows = 3)
 scale=7.4311e12
 
 # emcee params
-threads = 12
-nsteps = 2
+threads = 6
+nsteps = 100
 ndim, nwalkers = 6, 12
 
 # calculate log likelihood for single Cl against data
@@ -73,7 +73,7 @@ def run_camb_wrapper(theta, TT_):
 
 def lnprior(theta):
     H0, ombh2, omch2, tau, ns, As = theta
-    if (50 < H0 < 100 and .005 < ombh2 < .1 and .001 < omch2 < .5 and .01 < tau < .13
+    if (20 < H0 < 100 and .005 < ombh2 < .1 and .001 < omch2 < .99 and .01 < tau < .2
         and .8 < ns < 1.2 and 2 < np.log(1e10 * As) < 4):
         return -np.log(.02*np.sqrt(2*np.pi))-.5*((tau-.07)/.02)**2
     return -np.inf
@@ -94,17 +94,18 @@ if __name__ == '__main__':
     tau=.07
     ns=.965
     As=2e-9
-    lmax=2500
+    max=2500
     scale=7.4311e12
     
-    pos = 2*np.random.rand(nwalkers, ndim)-1
-    
-    pos[:, 0] = H0 + 5*pos[:,0]
-    pos[:, 1] = ombh2 + .005*pos[:, 1]
-    pos[:, 2] = omch2 + .004*pos[:, 2]
-    pos[:, 3] = tau + .02*pos[:, 3]
-    pos[:, 4] = ns + .05*pos[:, 4]
-    pos[:, 5] = As + 5e-10*pos[:, 5]
+#    pos = 2*np.random.rand(nwalkers, ndim)-1
+#    
+#    pos[:, 0] = H0 + 30*pos[:,0]
+#    pos[:, 1] = ombh2 + .015*pos[:, 1]
+#    pos[:, 2] = .5 + .5*pos[:, 2]
+#    pos[:, 3] = tau + .02*pos[:, 3]
+#    pos[:, 4] = ns + .1*pos[:, 4]
+#    pos[:, 5] = As + 5e-10*pos[:, 5]
+    pos = np.loadtxt('chain_12_50.dat')[-1*nwalkers:, 1:]
     
     sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob, threads = threads, 
                                     args=(TT_,))
@@ -113,14 +114,14 @@ if __name__ == '__main__':
     count = 0
     for result in sampler.sample(pos, iterations = nsteps, storechain = True):
         position = result[0]
-        f = open('chain.dat', 'a')
+        f = open('chain_12_50.dat', 'a')
         for k in np.arange(position.shape[0]):
             f.write("{0:4d} {1:s}\n".format(k, " ".join(position[k].astype('|S32'))))
         f.close()
         count += 1
         n = int((width+1) * float(count) / nsteps)
-#        sys.stdout.write("\r[{0}{1}]".format('#' * n, ' ' * (width - n)))
-#    sys.stdout.write("\n")
+        sys.stdout.write("\r[{0}{1}]".format('#' * n, ' ' * (width - n)))
+    sys.stdout.write("\n")
 #    t1 = time.time()
 #    print "finished emcee"
 #    fig = plt.figure(1)
@@ -156,10 +157,6 @@ if __name__ == '__main__':
     #print (m_mcmc, b_mcmc, f_mcmc)                                        
     #
     #print "plotting time: {}".format(t3-t2)
-    
-    
-    
-    
     
     
     
