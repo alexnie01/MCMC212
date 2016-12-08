@@ -23,8 +23,10 @@ b_true = 4.29
 f_true = .542
 
 # emcee params
-ndim, nwalkers = 3,100
-pos = np.random.rand(100,3)
+threads = 4
+nsteps = 2000
+ndim, nwalkers = 3,20
+pos = np.random.rand(nwalkers, ndim)
 pos[:, 1] = 10 * pos[:, 1]
 
 # Generate data
@@ -65,14 +67,13 @@ def lnprob(theta, x, y, yerr):
     return lp + lnlike(theta, x, y, yerr)
 print "starting emcee"
 t0 = time.time()
-sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob, args=(x,y,yerr))
+sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob, threads = threads, args=(x,y,yerr))
 #sampler.run_mcmc(pos, 2000)
-nsteps = 2000
 width = 30
 count = 0
 for result in sampler.sample(pos, iterations = nsteps, storechain = True):
     position = result[0]
-    f = open('chain.dat', 'a')
+    f = open('line_chain.dat', 'a')
     for k in np.arange(position.shape[0]):
         f.write("{0:4d} {1:s}\n".format(k, " ".join(position[k].astype('|S32'))))
     f.close()
@@ -109,3 +110,9 @@ print (m_mcmc, b_mcmc, f_mcmc)
 
 print "emcee time: {}".format(t1-t0)
 print "plotting time: {}".format(t3-t2)
+
+import emcee
+
+class Samp(emcee.EnsembleSampler):
+    def compress(self,f,x):
+        return map(f,x)

@@ -7,7 +7,7 @@ Created on Wed Dec  7 02:03:30 2016
 
 #import matplotlib.pyplot as plt
 import numpy as np
-import emcee
+from MCMCSolver import Sampler
 import camb
 from camb import model, initialpower
 #import time
@@ -107,7 +107,7 @@ if __name__ == '__main__':
 #    pos[:, 5] = As + 5e-10*pos[:, 5]
     pos = np.loadtxt('chain_12_50.dat')[-1*nwalkers:, 1:]
     
-    sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob, threads = threads, 
+    sampler = Sampler(nwalkers, ndim, lnprob, threads = threads, 
                                     args=(TT_,))
     ##sampler.run_mcmc(pos, 2000)
     width = 30
