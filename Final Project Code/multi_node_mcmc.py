@@ -4,10 +4,12 @@ Created on Wed Dec  7 02:03:30 2016
 
 @author: anie
 """
-
+from __future__ import (division, print_function, absolute_import,
+                        unicode_literals)
+from ensemble import EnsembleSampler
 #import matplotlib.pyplot as plt
 import numpy as np
-from MCMCSolver import Sampler
+
 import camb
 from camb import model, initialpower
 #import time

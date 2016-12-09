@@ -4,18 +4,20 @@ Created on Wed Dec  7 02:03:30 2016
 
 @author: anie
 """
-
+from __future__ import (division, print_function, absolute_import,
+                        unicode_literals)
+from ensemble import EnsembleSampler
 #import matplotlib.pyplot as plt
 import numpy as np
-from MCMCSolver import Sampler
+
 import camb
 from camb import model, initialpower
 #import time
 import sys
 #import corner
-#import pdb
+import pdb
 
-from emcee.utils import MPIPool
+from utils import MPIPool
 
 # read Planck file    
 filename = 'TTHILUB.txt'                   
@@ -97,17 +99,15 @@ if __name__ == '__main__':
     max=2500
     scale=7.4311e12
     
-#    pos = 2*np.random.rand(nwalkers, ndim)-1
-#    
-#    pos[:, 0] = H0 + 30*pos[:,0]
-#    pos[:, 1] = ombh2 + .015*pos[:, 1]
-#    pos[:, 2] = .5 + .5*pos[:, 2]
-#    pos[:, 3] = tau + .02*pos[:, 3]
-#    pos[:, 4] = ns + .1*pos[:, 4]
-#    pos[:, 5] = As + 5e-10*pos[:, 5]
-    pos = np.loadtxt('chain_12_50.dat')[-1*nwalkers:, 1:]
+    pos = 2*np.random.rand(nwalkers, ndim)-1
     
-    sampler = Sampler(nwalkers, ndim, lnprob, threads = threads, 
+    pos[:, 0] = H0 + 30*pos[:,0]
+    pos[:, 1] = ombh2 + .015*pos[:, 1]
+    pos[:, 2] = .5 + .5*pos[:, 2]
+    pos[:, 3] = tau + .02*pos[:, 3]
+    pos[:, 4] = ns + .1*pos[:, 4]
+    pos[:, 5] = As + 5e-10*pos[:, 5]
+    sampler = EnsembleSampler(nwalkers, ndim, lnprob, threads = threads, 
                                     args=(TT_,))
     ##sampler.run_mcmc(pos, 2000)
     width = 30
