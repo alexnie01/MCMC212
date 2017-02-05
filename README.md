@@ -8,7 +8,7 @@ This project implements a Markov Chain-Monte Carlo Solver to estimate cosmologic
 
 Once the simulation is finished, the program outputs the maximum likelihood estimate of each of the parameters as well as a grid of joint probabilities between cosmological parameters. 
 
-For more background on the algorithms and cosmology of the project, please refer to the included writeup (MCMC_Writeup.pdf).
+For more background on the algorithms and cosmology of the project, please refer to the included writeup (Final Project Papers/MCMC_Writeup.pdf) as well as the various references. 
 
 Setup:
 
