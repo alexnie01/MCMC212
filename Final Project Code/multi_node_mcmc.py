@@ -7,7 +7,7 @@ Created on Wed Dec  7 02:03:30 2016
 
 #import matplotlib.pyplot as plt
 import numpy as np
-from MCMCSolver import Sampler
+import emcee
 import camb
 from camb import model, initialpower
 #import time
@@ -111,7 +111,7 @@ if __name__ == '__main__':
         pool.wait()
         sys.exit(0)
     
-    sampler = Sampler(nwalkers, ndim, lnprob, threads = threads, 
+    sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob, threads = threads, 
                                     args=(TT_,),pool=pool)
 
     pool.close()
