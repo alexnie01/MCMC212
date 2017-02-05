@@ -1,0 +1,114 @@
+\documentclass{article}
+\usepackage{amssymb, amsmath}
+\usepackage[margin=1in]{geometry}
+\newcommand{\tot}[2]{\frac{d\,#1}{d\,#2}}
+\title{Physics 212 Problem Set 3}
+\author{Alex Nie}
+\date{September 21, 2016}
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+In co-moving units, the horizon scale at a given $z$ is
+\[\eta = c\int_\infty^z\frac{dz'}{H(z')}\]
+Substituting into the Friedmann equation for $\Omega_m=1$, $H = H_0(1+z)^{\frac{3}{2}}$. Then at $z=1000$, 
+\begin{align*}
+\eta_1000 &= c\int_{1000}^\infty\frac{dz'}{H_0(1+z')^{\frac{3}{2}}}=\frac{2c}{H_0\sqrt{1001}}\\
+&= \frac{2(3\times 10^5\,km\,s^{-1}}{100\,h^{-1}\,km\,Mpc^{-1}\,s^{-1}\sqrt{1001}}\\
+&= 189.6\,h^{-1}\,Mpc
+\end{align*}
+
+Today, the distance to an object at $z=1000$ is
+\begin{align*}
+\eta_0 &= c\int_0^z\frac{dz'}{H_0(1+z')^{\frac{3}{2}}}\\
+&= \frac{2c}{H_0}\left(1-\frac{1}{\sqrt{1001}}\right)\\
+&= \frac{2(3\times 10^5\,km\,s^{-1})}{100\,km\,Mpc^{-1}\,s^{-1}}\left(1-\frac{1}{\sqrt{1001}}\right)\\
+&= 5810\,Mpc
+\end{align*}
+
+This yields a subtended angle in degrees of 
+\[\theta = \frac{\eta_{1000}}{\eta_0} = \frac{189.6}{5810}\frac{180}{\pi}=1.87^o\]
+\section*{Problem 2}
+Assuming the monopoles are in thermal equilibrium with radiation at the GUT transition, we first compute the redshift corresponding to a temperature of $10^{15}\,GeV$. We then compute the Hubble volume and divide the energy of a single monopole by this volume to obtain the relic density.
+
+From class, we have that the temperature dependence of radiation is $T(z) = (1+z)T_0$. Then
+\[z_{GUT} = \frac{T_{GUT}}{T_0}-1=\frac{10^{24}\,eV}{2.34\times 10^{-4}\,eV}-1= 4.27\times 10^{27}\]
+
+The Hubble radius at this redshift is given by 
+\[r = \frac{1}{1+z}\int\frac{c\,dz'}{H(z')}\]
+
+As the GUT transition happens well within the radiation-dominated era, $H(z) \approx H_0(1+z)^2$. Then
+\begin{align*}
+r &= \frac{1}{1+z}\int_{z_{GUT}}^\infty \frac{c\,dz'}{H_0(1+z')^2}\\
+&= \frac{c}{H_0(1+z_{GUT})^2}
+\end{align*}
+
+The Hubble volume is then given by $\frac{4}{3}\pi r^3$ so
+\[V = \frac{4\pi c^3}{3H_0^3(1+z_{GUT})^6}\]
+
+Then the density of monopoles should be 
+\[V= \frac{4\pi (3\times 10^{10}\frac{cm}{s})^3}{3(2.27\times 10^{-18}s^{-1})^3(1+4.27\times 10^{27})^6}=1.60\times 10^{-81}\,cm^{3}\]
+\[n = V^{-1} = 6.30\times 10^{80}\,cm^{-3}\]
+
+This yields an energy density of 
+\begin{align*}
+\rho = \frac{M}{V} &= \frac{10^{24}\,\frac{eV}{c^2}}{1.60\times 10^{-81}\,cm^{3}}\left(\frac{1.6\times 10^{-19}\,J}{1\,eV}\right)\left(\frac{c}{3\times 10^8\frac{m}{s}}\right)^2\\
+&= 1.11\times 10^{72}\frac{g}{cm^3}
+\end{align*}
+
+As density scales as $a^{-3}$, then today this density is
+\[1.11\times 10^{-72}\left(\frac{1}{1+z_{GUT}}\right)^3 = 1.42\times 10^{-11}\frac{g}{cm^3}\]
+
+The Parker bound induces a maximum monopole energy density of
+\[\rho_{max} = 10^{-6}\left(\frac{3H_0^2}{8\pi G}\right) = 10^{-6}\left(\frac{3(2.27\times 10^{-18}s^{-1})^2}{8\pi (6.67\times 10^{-11}m^3\,kg^{-1}}\right)=9.22\times 10^{-36}\]
+
+Then since density scales as $a^{-3}$, the number of e-folds needed is
+\[N = \frac{1}{3}\ln\left(\frac{\rho}{\rho_{max}}\right) = 18.6\]
+
+\section*{Problem 3}
+\subsection*{a)}
+
+In the slow-roll regime, we have that $V\gg\dot{\phi}^2\implies \rho=\frac{1}{2}\dot{\phi}^2+V\approx V$.
+\begin{align*}
+3H\dot{\phi}&= -V'\\
+H^2 &= \frac{8\pi G}{3}V
+\end{align*}
+
+Next,
+\begin{align*}
+\epsilon &= -\frac{1}{H^2}\left(\frac{\ddot{a}}{a}-\left(\frac{\dot{a}}{a}\right)^2\right)
+\end{align*}
+From the Friedmann equations derived in class,
+\begin{align*}
+\frac{\ddot{a}}{a} &= -\frac{4\pi G}{3}(\rho+3p)\\
+\left(\frac{\dot{a}}{a}\right)^2 &= -\frac{8\pi G}{3}\rho
+\end{align*}
+Then
+\begin{align*}
+\epsilon &= \frac{4\pi G}{H^2}(\rho+p)\\
+&= \frac{4\pi G}{H^2}\dot{\phi}^2\\
+&= 4\pi G\left(\frac{3}{8\pi G V}\right)^2\left(\frac{V'^2}{9}\right)\\
+&= \frac{1}{4\pi G \phi^2}
+\end{align*}
+
+To calculate $\eta$ we note that
+\[|\dot{\epsilon}| = |\frac{1}{2\pi G \phi^3}\dot{\phi}| = \frac{V'}{6H\pi G\phi^3}\]
+
+Then
+\begin{align*}
+\eta &= \frac{|\dot{\epsilon}|}{H\epsilon}\\
+&= \left(\frac{V'}{6\pi G\phi^3}\right)\left(4\pi G\phi^2\right)\left(\frac{3}{8\pi GV}\right)\\
+&=\frac{1}{4\pi G\phi}\frac{V'}{V}\\
+&=\frac{1}{2\pi G\phi^2}
+\end{align*}
+\subsection*{b)}
+Slow-roll conditions end when $\eta\approx 1$ or $\epsilon\approx 1$.  Since the two expressions are the same order of magnitude for the given potential, we use $\eta$ as it is larger. Then
+\[\frac{1}{2\pi G\phi_{end}^2}=1\implies \phi_{end}= \sqrt{2\pi G}\]
+
+\section*{Problem 4}
+
+See handwritten sheet for diagram. 
+
+From the literature, several mechanisms proposed to realize a bounce. In Poplawski (2012), a spin interaction in Einstein-Cartan-Sciama-Kibble gravity causes gravitons to be inflationary rather than contracting at very small scales. Brandenberger (2012) proposes a matter bounce scenario in which quantum fluctuations in a matter-dominated era at small scales, especially those corresponding to very small  k-modes, perturb the metric and induce a bounce.
+
+\end{document}

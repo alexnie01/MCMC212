@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{amssymb, amsmath}
+\usepackage[margin=1in]{geometry}
+\newcommand{\tot}[2]{\frac{d\,#1}{d\,#2}}
+\title{Physics 212 Problem Set 4}
+\author{Alex Nie}
+\date{September 21, 2016}
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+\subsection*{a)}
+From class we have that
+\[\frac{\Delta_T^2}{\Delta_R^2} =\frac{\frac{2H_*^2}{\pi^2 M_{Pl}^2}}{\frac{H_*^4}{(2\pi)^2\dot{\Phi}^2}} = \frac{8\dot{\Phi}^2}{M_{Pl}^2H_*^2}\]
+In the slow-roll approximation, we have
+\begin{align*}
+3H\dot{\Phi} &= V'\\
+H^2 &= -\frac{8\pi G}{3}V\\
+\epsilon = -\frac{\dot{H}}{H^2}
+\end{align*}
+Differentiating the second equation,
+\begin{align*}
+2H\dot{H} &= -\frac{8\pi G}{3}V'\dot{\Phi}\\
+&= -\left(\frac{8\pi G}{3}\right)(3H\dot{\Phi})\dot{\Phi}\\
+\dot{H} &= -4\pi G \dot{\Phi}^2
+\end{align*}
+
+Then substituting into $\epsilon$, 
+\[\epsilon = -\frac{\dot{H}}{H^2} = \frac{4\pi G\dot{\Phi}^2}{H^2}\]
+
+Then
+\[\frac{\Delta_T^2}{\Delta_R^2} = \frac{2\epsilon}{\pi}\]
+\subsection*{b)}
+By definition, $N=\int H\,dt$ so $dN = H\,dt=\frac{H}{\dot{H}}\,dH$. Then
+\[\frac{d\ln H}{dN} = \frac{1}{H}\tot{H}{N} = \frac{\dot{H}}{H^2} = -\epsilon\]
+We use the chain rule through $N$ to rewrite $d\ln k$. We then have
+\[\ln k = -\ln (aH) = -\ln(a_* e^N H) = -\ln a_* - N - \ln H\]
+\[\tot{\ln k}{N} = -(1+\tot{\ln H}{N}) = \epsilon-1\]
+Then the implicit function theorem,
+\[\tot{N}{\ln k} = -\frac{1}{\epsilon-1}\]
+
+As shown in part 1, 
+\[\dot{H} = -4\pi G\dot{\phi}^2\]
+
+Then
+\[\Delta_R^2 = \frac{H_*^4}{(2\pi)^2}\left(\frac{-4\pi G}{\dot{H}}\right) = C_2 \frac{H_*^2}{\epsilon}\]
+for some constant $C_2$. Therefore,
+
+\begin{align*}
+n_s-1 &= \tot{\ln \Delta_R^2}{\ln k}\\
+&= 2\tot{ln H_*}{\ln k}-\tot{\ln \epsilon}{\ln k}\\
+&= 2\epsilon-\frac{1}{\epsilon}\tot{\epsilon}{N}\tot{N}{\ln k}\\
+&=2\epsilon-\eta
+\end{align*}
+
+Where we have used
+\begin{align*}
+\frac{1}{\epsilon}\tot{\epsilon}{N} &= \frac{1}{\epsilon}\tot{\epsilon}{t}\tot{t}{H}\tot{H}{N}\\
+&= \frac{\dot{\epsilon}}{\epsilon H}\\
+&=\eta
+\end{align*}
+\subsection*{c)}
+From class,
+\[\ln \Delta_t^2 = \ln\left(\frac{2H_*^2}{\pi M_{Pl}^2}\right) = 2\ln H_* + C_1\]
+
+for some constant $C_1$. Then similar to part b), we have
+\[n_t=\tot{\ln \Delta_t^2}{\ln k} = \tot{\ln \Delta_t^2}{N}\tot{N}{\ln k} = \frac{2\epsilon}{\epsilon-1}\approx -2\epsilon\]
+
+\subsection*{d)}
+
+We have that $r = \frac{2\epsilon}{\pi}$ and $n_t = 2\epsilon$ so $r=-\frac{n_t}{\pi}$.
+\end{document}

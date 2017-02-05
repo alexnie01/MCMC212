@@ -1,0 +1,205 @@
+\documentclass{article}
+\usepackage{amssymb, amsmath}
+\usepackage[margin=1in]{geometry}
+\newcommand{\tot}[2]{\frac{d\,#1}{d\,#2}}
+\title{Physics 212 Problem Set 5}
+\author{Alex Nie}
+\date{October 24, 2016}
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+\subsection*{a)}
+When $X$ and $\bar{X}$ are in equilibrium, the annihilation reaction yields that $\mu_X=0$. Moreover, if $X$ decouples when $T>m_X c^2$, then $X$ decouples in the ultra-relativistic regime. $X$ is a massless boson with two states, $X$ and $\bar{X}\implies$ $X$ has the same statistics as photons. Using our derivation from class for bosons, (also repeated in Mukhanov Section 3.3), 
+\begin{align*}
+n_X &= \frac{g}{2\pi^2}\int_m^\infty \frac{\sqrt{\epsilon^2-m^2}}{\exp(\frac{\epsilon-\mu}{T})-1}\\
+&\approx \frac{g}{2\pi^2}\int_0^\infty \frac{\epsilon^2\,d\epsilon}{\exp(\frac{\epsilon}{T})-1}
+\end{align*}
+which looks exactly like the photon number density in the ultrarelativistic regime. We can therefore see how the cosmological catastrophe will arise. While $n_X$ and therefore $\Omega_X$ is on the same order as the corresponding values for radiation in the radiation-dominated era, they decay as $a^-3$ rather than $a^{-4}$. Given how much smaller $\Omega_\gamma$ is than $\Omega_m$ today, this model results in dark matter whose energy density does not decay fast enough to produce the observed results.
+
+Therefore up to the decoupling, $n_X = \frac{gT^3}{\pi^2}$ for $T\gg m_X c^2$. Let $T^*$ denote the temperature of decoupling. As this occurs very early in the universe, it should occur during the radiation-dominated era. Therefore,
+\[\rho_\gamma = \rho_{\gamma,0}a^{-4} = \frac{\pi^2 T^4}{15}\implies a^* = \left(\frac{15\rho_{\gamma,0}}{\pi^2 (T^*)^4}\right)^{\frac{1}{4}}\]
+
+Finally, using the definition of $\Omega$, 
+\begin{align*}
+\Omega_X h^2 &= h^2\frac{\rho_{X,0}}{\rho_{cr,0}}\\
+&=\frac{h^2m_X n_{X,0}}{\rho_{cr,0}}\\
+&= \frac{h^2 m_X (a^*)^3 n^*_X}{\rho_{cr,0}}\\
+&= \left(\frac{15^{\frac{3}{4}}}{\pi^{\frac{7}{2}}}\right)\left(\frac{\rho_{\gamma,0}^{\frac{3}{4}}}{\rho_{cr,0}}\right)\left(g m_X h^2\right)\\
+&\approx \left(\frac{15^{\frac{3}{4}}}{\pi^{\frac{7}{2}}}\right)(\Omega_X h^2)(gm_X)
+\end{align*}
+
+We can use dimesional analysis to restore SI units from natural units using $\frac{c^2}{\hbar}$ so 
+\begin{align*}
+\Omega_X h^2 &\approx \left(\frac{15^{\frac{3}{4}}}{\pi^{\frac{7}{2}}}\right)(4.2\times 10^{-5})\frac{(2)(1.66\times 10^{-27}\,kg)(3\times 10^8 \frac{m}{s})^2}{1.05\times 10^{-34}J\cdot s}\\
+&= 1.67\times 10^{19}
+\end{align*}
+
+This is a cosmological catastrophe as $X$ would contribute to the matter density, and the observed $\Omega_m h^2$ is much less than $\Omega_X h^2$, even though we used the lower bound on the mass--the proton mass.
+\subsection*{b)}
+At termination for the scattering process,
+\[\Gamma = n^*_X \sigma_a v = H\]
+
+Therefore, the relic abundance is given by 
+\[n_{X,0} = (a^*)^3 n^*_X = \frac{(a^*)^3 H^*}{\sigma_a v}\]
+
+From the assumptions in the problem, $T = \frac{.1m_X c^2}{k}$ Using the equipartition theorem,
+\begin{align*}
+\frac{1}{2}m_Xv^2 &=\frac{3}{2}k_B T\\
+v &= \sqrt{3k_B T}{m_X} = c\sqrt{\frac{3k_B T}{m_X c^2}} = c\sqrt{\frac{3}{10}}
+\end{align*}
+
+Next, since this decoupling occurs during the radiation-dominated era, we use the Friedmann equations.
+\begin{align*}
+H^2 = \frac{8\pi G \rho}{3} &= \frac{8\pi G}{3}\left(\frac{g_*\pi^2 k_B^4T^4}{15\hbar^3 c^5}\right)\\
+H &= \frac{m_X^2}{75}\left(\frac{\pi^3 g_* G c^3}{10\hbar^3}\right)^{\frac{1}{2}}
+\end{align*}
+where we have computed the energy density of photons and then multiplied by the total number of species as they are in thermal equilibrium. Finally, in the radiation dominated era, $T\propto a^{-1}$ so $a^*T^*=a_0T_0\implies T^* = \frac{a_0 T_0}{a^*}= \frac{m_X c^2}{10k_B}$. Therefore
+\[a^* = \frac{10 k_B T_0}{m_X c^2}\]
+
+Substituting everything into the expression for $n_X$ at $T_0=2.725\,K$, we have a relic abundance of
+
+\begin{align*}
+n_X &= \frac{40 k_B^3 T_0^3}{3\sigma_a m_X}\sqrt{\frac{g_* G \pi^3}{3 c^{11}}}\\
+&=\frac{4.11\times 10^{-66}\,\frac{kg}{m}}{m_X \sigma_a}
+\end{align*}
+
+We can rewrite the rate equation in $\sigma_a$ to give
+\begin{align*}
+\sigma_a &= \frac{H^*}{n^*_X v^*}\\
+&= \frac{(a^*)^3 H^*}{n_X \sqrt{\frac{3}{10}}c}\\
+\end{align*}
+
+We have that $n_X = \frac{\Omega_X \rho_{cr}}{m_X} = \frac{3 H_0^2 \Omega_X}{8\pi G m_X}$ so substituting in our expressions for $a^*$ and $H^*$ from earlier,
+\begin{align*}
+\sigma_a &= \frac{320 k_B^3 T_0^3}{9c^7 H_0^2 \Omega_X}\left(\frac{\pi^5 c^3 g_* G^3}{3\hbar^3}\right)^{\frac{1}{2}}\\
+&= \frac{320(1.38\times 10^{-23}\frac{J}{K})^3(2.725\,K)^3}{9(3\times 10^8 \frac{m}{s})(100\,h\,\frac{km}{s\cdot Mpc})(\frac{.11}{h^2})}\left(\frac{\pi^5 (3\times 10^8\frac{m}{s})^3(100)(6.67\times 10^{-11}\frac{m^3}{kg\cdot s^2})^3}{3(1.05\times 10^{-34}J\cdot s)^3}\right)^{\frac{1}{2}}\\
+&=1.99\times 10^{-39}m^2
+\end{align*}
+
+\section*{Problem 2}
+For the combined fluid, 
+\begin{align*}
+p \approx p_\gamma &= \frac{1}{3}\rho_{\gamma,0}a^{-4}c^2\\
+\rho &= \rho_{\gamma, 0}a^{-4}+\rho_{b,0}a^{-3}
+\end{align*}
+
+To insert cosmological parameters, we note that
+\[
+\rho_{\gamma,0} = \rho_{cr,0}\Omega_{\gamma,0}
+\]
+Then
+\begin{align*}
+p &= \frac{1}{3}\left(\frac{3H_0^2}{8\pi G}\right)\Omega_{\gamma,0}a^{-4}c^2\implies\\
+\tot{p}{a} &= -\frac{4H_0^2\Omega_{\gamma,0}a^{-5}c^2}{8\pi G}\\
+\rho &= \frac{3 H_0^2}{8\pi G}\left(\Omega_{\gamma,0}a^{-4}+\Omega_{b,0}a^{-3}\right)\implies\\
+\tot{\rho}{a} &= -\frac{3H_0^2}{8\pi G}(4\Omega_{\gamma,0}a^{-5}+3\Omega_{b,0}a^{-4})
+\end{align*}
+
+Then
+\begin{align*}
+c_s^2 &= \frac{\tot{p}{a}}{\tot{\rho}{a}}\\
+&= \frac{1}{3}\left(\frac{1}{1+\frac{3\Omega_{b,0}}{4\Omega_{\gamma,0}}a}\right)c^2
+\end{align*}
+
+Then
+\begin{align*}
+c_s(z) &= \frac{c}{\sqrt{3}}\left(\frac{1}{1+\frac{3\Omega_{b,0}}{4\Omega_{\gamma,0}(1+z)}}\right)^{\frac{1}{2}}
+\end{align*}
+
+In the limit that $z>1000$, we have 
+\[\frac{3}{4}\frac{\Omega_{b,0}}{\Omega_{\gamma,0}}\frac{1}{1+z}=\frac{3}{4}\frac{2\times 10^{-2}}{4.2\times 10^{-5}}\frac{1}{1+1000+\Delta z}\leq .357\]
+
+Then 
+\[c_s(z) \geq \frac{c}{\sqrt{3}}\left(\frac{1}{1+.357}\right)^{\frac{1}{2}}\geq (.858)\frac{c}{\sqrt{3}}\]
+
+Therefore, for $z>1000$, $c_s\approx \frac{c}{\sqrt{3}}$ is good to within $30\%$ on either side.
+\subsection*{b)}
+Using the definition $H=\frac{\dot{a}}{a}$, we can covert our integral over time to one over redshift. 
+\begin{align*}
+s_*&=\int_0^{t_*}\,dt c_s(z)(1+z)\\
+&= \int_0^{a_*} \frac{c_s(z)(1+z)da}{aH(a)}\\
+&= \int_{z_*}^\infty \frac{c_s(z)\,dz}{H(z)}
+\end{align*}
+
+From the Friedmann equation with only matter and radiation,
+\[H(z) = H_0\sqrt{\Omega_m (1+z)^3+\Omega_{rad}(1+z)^4}\]
+Then
+\begin{align*}
+s_* &= \frac{2c}{\sqrt{3}H_0}\left(\sqrt{\frac{\Omega_m}{1+z_*}+\Omega_{rad}}-\sqrt{\Omega_{rad}}\right)
+\end{align*}
+Substituting in $\Omega_mh^2 = .14$, $\Omega_{rad}h^2 = 4.2\times 10^{-5}$, we have
+\[s_* = 5.34\times 10^{24}m=173\,Mpc\]
+
+We cannot neglect radiation in this calculation as $z=1000$ as radiation makes a significant contribution to the Hubble parameter during this time. Scaling back, $\Omega_mh^2(1+1000)^3 = 1.4\times 10^8$ and $\Omega_{rad}h^2(1+1000)^4= 4.22\times 10^7$ so even at the endpoint, the contribution to $H(z)$ is significant.. At even earlier times, $\Omega_{rad}h^2$ grows faster than $\Omega_mh^2$ due to the fourth power law and we enter the radiation-dominated era.
+\subsection*{c)}
+The peaks in the acoustic oscillations are given by $l=ks_*=n\pi$ as the Bessel function $j_l(x)$ attains its maximum near $x=l$. We compare the size of variations in $s_*$.
+
+Upon inspection, $\Omega_\Lambda$ should affect $s_*$ less than $\Omega_K$ as $\Omega_\Lambda$ does not scale with redshift. Keeping terms to first order, a variation in $\Omega_\Lambda$ produces
+\[s_*+\delta s_*= \frac{c}{\sqrt{3}H_0}\int_{z_*}^\infty \frac{dz}{\sqrt{\Omega_\Lambda + \delta\Omega_\Lambda + Q_\Lambda}}\]
+where $Q_\Lambda$ is the collection of all other terms in the integrand. Then
+\begin{align*}
+s_* + \delta s_* \approx \frac{c}{\sqrt{3}H_0}\int_{z_*}^\infty \frac{dz}{\sqrt{\Omega_\Lambda + Q_\Lambda}}\left(1-\frac{\delta\Omega_\Lambda}{2(\Omega_\Lambda + Q_\Lambda)}\right)
+\delta s_* &= -\frac{c}{2\sqrt{3} H_0}\int_{z_*}^\infty \frac{\delta \Omega_\Lambda\,dz}{(\Omega_\Lambda + Q_\Lambda)^{\frac{3}{2}}}
+\end{align*}
+Repeating the procedure for $\Omega_K$, we obtain
+\[\delta s_* = -\frac{c}{2\sqrt{3}H_0}\int_{z_*}^{\infty}\frac{\delta\Omega_K(1+z)^2\,dz}{(\Omega_K+Q_K)^{\frac{3}{2}}}\]
+
+We therefore have that $\delta_K s_* > 10^6 \delta_\Lambda s_*$ since $z>1000$ in this regime.
+
+Next we vary $h$.
+\begin{align*}
+s_*+\delta s_* &= \frac{c}{\sqrt{3}(h+\delta h)C_1}\int_{z_*}^\infty \frac{dz}{\sqrt{Q}}\\
+&= \frac{c}{\sqrt{3}H_0}\left(1-\frac{\delta h}{h}\right)\int_{z_*}^\infty\frac{dz}{\sqrt{Q}}\\
+\delta s_* &= -\frac{c}{\sqrt{3}H_0}\frac{\delta h}{h}\int_{z_*}^\infty \frac{dz}{\sqrt{Q}}\\
+&= -\frac{\delta h}{h}s_*
+\end{align*}
+
+This is essentially a second order term as $\frac{\delta h}{h}$ so it contributes marginally. Compared with $\delta_K s_*$, we see that the integrands differ by $\frac{(1+z)^2}{Q}>1$ so $\delta_K s_* > \delta_h s_*$.
+
+\section*{Problem 3}
+\subsection*{a)}
+From class we have that $\sigma_T = \frac{8\pi \alpha^2}{3m_e^2}$. Moreover,
+\[n_e = \left(1-\frac{Y_p}{2}\right)\chi_e n_b\]
+
+Assuming all electrons are ionized, $\chi_e=1$ and assuming all baryons are hydrogen, $Y_p=0$ and $n_b = \frac{\rho_b}{m_H} = \frac{\Omega_b \rho_{cr}}{m_H}$
+
+By definition, 
+\[\lambda(a) = \frac{c}{\Gamma(a)} = \frac{a^3 c}{n_e\sigma_T c} = \frac{a^3}{n_e\sigma_T}\]
+in physical distance units. Substituting in,
+\begin{align*}
+\lambda(z) &= \frac{a^3}{\left(\frac{3H_0^2\Omega_b}{8\pi G m_H}\right)\left(\frac{8\pi \alpha^2}{3m_e^2}\right)}\\
+&= \left(\frac{G m_e^2 m_H}{H_0^2 \Omega_b \alpha^2}\right)\frac{1}{(1+z)^3}
+\end{align*}
+
+We can also use the number for $\sigma_T$ of an electron given in class:
+\begin{align*}
+\lambda(z) &= \frac{a^3}{\sigma_T n_e}\\
+&=\frac{1}{(1+z)^3} \frac{1}{6.65\times 10^{-29}m^2}\frac{8\pi (6.67\times 10^{-11}\,m^3\,kg^{-1}s^{-2})(1.67\times 10^{-27}\,kg)}{3(.02)(100\frac{km}{s\cdot\,Mpc})^2}\\
+&= \frac{6.68\times 10^{28}\,m}{(1+z)^3}\\
+&= \frac{2.165\times 10^6 Mpc}{(1+z)^3}
+\end{align*}
+
+Using the Friedmann equation, the Hubble radius is given by
+\begin{align*}
+\frac{c}{H(z)} &= \frac{c}{H_0\sqrt{\Omega_m (1+z)^3+\Omega_\gamma(1+z)^4+\Omega_k(1+z)^2+\Omega_\Lambda}}\\
+&=\frac{9.24\times 10^{27}m}{\sqrt{\Omega_mh^2(1+z)^3+\Omega_\gamma(1+z)^4+\Omega_k(1+z)^2+\Omega_\Lambda}}\\
+\end{align*}
+We see that even if $\Omega_\gamma=1$, the component which grows the fastest at high $z$, the denominator does not grow as fast as the denominator of $\lambda(z)$ for large $z$. Therefore, in the early universe, $\lambda<\frac{c}{H(z)}$. 
+
+We perform a sample calculation for $z=2000$. Since the universe after $z=3600$ is matter-dominated, we ignore the contributions from other components. Then
+\[\lambda(z=2000) = 8.38\times 10^{18}m = 2.72\times 10^{-4}\,Mpc\]
+\[\frac{c}{H(z=2000)} = \frac{9.24\times 10^{27}}{\sqrt{(.14)(1+2000)^3}}=2.75\times 10^{23}m = 8.91\,Mpc\]
+which matches our intuition previously.
+
+\subsection*{b)}
+We reintroduce the reionization fraction, but retain the assumption that all baryons are hydrogen. Then $n_e = \chi_e n_b$ so
+\[\lambda(z) = \frac{1}{\chi_e n_b\sigma_T}\frac{1}{(1+z)^3} = \frac{1}{\chi_e\sigma_T(1+z)^3}\frac{8\pi G m_H}{3 H_0^2\Omega_b}\]
+Setting this equal to the Hubble radius,
+\begin{align*}
+\chi_e &= \frac{8\pi G m_H}{3H_0c\sqrt{\Omega_m}(1+z)^{\frac{3}{2}}\sigma_T}\\
+&= \frac{8\pi (6.67\times 10^{-11}\,kg\,m^{-3}\,s^{-2})(1.66\times 10^{-27}\,kg)(3.09\times10^{19}\frac{Mpc}{km})(1\,Mpc)}{(3)(100\,km)(3\times 10^8\frac{m}{s})(\sqrt{.14})(1+1000)^{\frac{3}{2}}(6.65\times 10^{-29}m^2)}\\
+&= 1.21\times 10^{-3}
+\end{align*}
+
+\end{document}
