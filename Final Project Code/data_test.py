@@ -4,7 +4,6 @@ Created on Tue Dec  6 01:24:10 2016
 
 @author: anie
 """
-import pdb
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
