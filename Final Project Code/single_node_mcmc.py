@@ -23,8 +23,8 @@ TT_ = np.loadtxt('TTHILUB.txt', skiprows = 3)
 scale=7.4311e12
 
 # emcee params
-threads = 6
-nsteps = 100
+threads = 3
+nsteps = 10
 ndim, nwalkers = 6, 12
 
 # calculate log likelihood for single Cl against data
@@ -97,15 +97,15 @@ if __name__ == '__main__':
     max=2500
     scale=7.4311e12
     
-#    pos = 2*np.random.rand(nwalkers, ndim)-1
-#    
-#    pos[:, 0] = H0 + 30*pos[:,0]
-#    pos[:, 1] = ombh2 + .015*pos[:, 1]
-#    pos[:, 2] = .5 + .5*pos[:, 2]
-#    pos[:, 3] = tau + .02*pos[:, 3]
-#    pos[:, 4] = ns + .1*pos[:, 4]
-#    pos[:, 5] = As + 5e-10*pos[:, 5]
-    pos = np.loadtxt('chain_12_50.dat')[-1*nwalkers:, 1:]
+    pos = 2*np.random.rand(nwalkers, ndim)-1
+    
+    pos[:, 0] = H0 + 30*pos[:,0]
+    pos[:, 1] = ombh2 + .015*pos[:, 1]
+    pos[:, 2] = .5 + .5*pos[:, 2]
+    pos[:, 3] = tau + .02*pos[:, 3]
+    pos[:, 4] = ns + .1*pos[:, 4]
+    pos[:, 5] = As + 5e-10*pos[:, 5]
+    #pos = np.loadtxt('chain_12_50.dat')[-1*nwalkers:, 1:]
     
     sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob, threads = threads, 
                                     args=(TT_,))
